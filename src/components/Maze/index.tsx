@@ -1,3 +1,4 @@
+import Avatar from 'components/Avatar'
 import React, { FunctionComponent } from 'react'
 import { CellType } from 'utils/level'
 import { v4 as uuidv4 } from 'uuid'
@@ -21,6 +22,7 @@ export const Maze: FunctionComponent<MazeProps> = ({ list }) => {
           </Row>
         )
       })}
+      <Avatar />
     </MazeContainer>
   )
 }

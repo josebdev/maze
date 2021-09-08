@@ -1,20 +1,11 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import { Maze } from 'components/Maze'
-import { mazeFinal, INITIAL } from 'utils/level'
-import { getIndexOfKey } from 'utils/array'
-import { Coordinates } from 'types'
-import Avatar from 'components/Avatar'
+import { mazeFinal } from 'utils/level'
 
-const initialPosition = getIndexOfKey(mazeFinal, INITIAL)
-
-const Main: FC<any> = () => {
-  const [position, setPosition] = useState<Coordinates>(
-    initialPosition as Coordinates
-  )
+const Main: FC = () => {
   return (
     <main>
       <Maze list={mazeFinal}></Maze>
-      <Avatar position={position} />
     </main>
   )
 }

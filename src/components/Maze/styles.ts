@@ -25,6 +25,6 @@ export const Cell = styled.div<{ type: CellType }>`
 `
 export const MazeContainer = styled.div`
   position: relative;
-  max-width: 728px;
+  max-width: fit-content;
   margin: 0 auto;
 `
