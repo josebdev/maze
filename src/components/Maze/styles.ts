@@ -4,10 +4,12 @@ import { CellType } from 'utils/level'
 export const Row = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  width: fit-content;
+  margin: 0 auto;
 `
 export const Cell = styled.div<{ type: CellType }>`
-  min-width: 40px;
-  min-height: 40px;
+  min-width: 50px;
+  min-height: 50px;
   background: ${(props) => {
     switch (props.type) {
       case 'BLOCKED':

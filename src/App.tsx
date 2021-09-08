@@ -1,12 +1,17 @@
 import React from 'react'
 import { Maze } from 'components/Maze'
 import { mazeFinal } from 'utils/level'
+import Footer from 'components/Footer'
+import { Layout } from 'theme/common/styles'
+import Header from 'components/Header'
 
 function App() {
   return (
-    <div>
+    <Layout>
+      <Header />
       <Maze list={mazeFinal} />
-    </div>
+      <Footer />
+    </Layout>
   )
 }
 
