@@ -1,7 +1,7 @@
-const BLOCK = 'BLOCKED'
-const FREE = 'FREE'
-const INITIAL = 'INITIAL'
-const FINAL = 'FINAL'
+export const BLOCK = 'BLOCKED'
+export const FREE = 'FREE'
+export const INITIAL = 'INITIAL'
+export const FINAL = 'FINAL'
 
 export type CellType =
   | typeof BLOCK

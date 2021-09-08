@@ -1,15 +1,15 @@
 import React from 'react'
-import { Maze } from 'components/Maze'
-import { mazeFinal } from 'utils/level'
+
 import Footer from 'components/Footer'
 import { Layout } from 'theme/common/styles'
 import Header from 'components/Header'
+import Main from 'components/Main'
 
 function App() {
   return (
     <Layout>
       <Header />
-      <Maze list={mazeFinal} />
+      <Main />
       <Footer />
     </Layout>
   )
