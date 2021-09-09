@@ -20,6 +20,14 @@ export function usePosition(
     steps: 0,
   })
 
+  function resetGame() {
+    setPosition({
+      position: initialPosition as Coordinates,
+      steps: 0,
+      finished: false,
+    })
+  }
+
   function setNewPosition(event: React.KeyboardEvent) {
     if (finished) return
     switch (event.key) {
@@ -59,5 +67,5 @@ export function usePosition(
     }
   }
 
-  return { position, steps, setPosition: setNewPosition }
+  return { position, steps, setPosition: setNewPosition, resetGame }
 }

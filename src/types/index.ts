@@ -11,4 +11,5 @@ export interface MazeState {
 
 export interface MazeContextInterface extends MazeState {
   setPosition: React.Dispatch<any>
+  resetGame: () => void
 }
