@@ -1,4 +1,5 @@
-import { Coordinates } from 'types'
+import { Coordinates, MazeState } from 'types'
+import { BLOCK, CellType, FINAL } from './level'
 
 export const getIndexOfKey = <T>(
   arr: T[][],
@@ -11,3 +12,25 @@ export const getIndexOfKey = <T>(
     }
   }
 }
+
+export const verifyNextMove =
+  (maze: CellType[][]) =>
+  (oldCordinate: MazeState, newCordinates: Coordinates): MazeState => {
+    const { x, y } = newCordinates
+    let finished = false
+    if (x < 0 || y < 0) {
+      return {
+        ...oldCordinate,
+      }
+    }
+    const nextMove = maze[x][y]
+    if (nextMove === BLOCK) {
+      return {
+        ...oldCordinate,
+      }
+    }
+    if (nextMove === FINAL) {
+      finished = true
+    }
+    return { position: { x, y }, steps: oldCordinate.steps++, finished }
+  }

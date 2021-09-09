@@ -6,4 +6,5 @@ export interface Coordinates {
 export interface MazeState {
   position: Coordinates
   steps: number
+  finished?: boolean
 }
