@@ -1,4 +1,6 @@
-const API_URL = 'http://www.mocky.io/v2/5df38f523100006d00b58560'
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const API_URL = 'https://www.mocky.io/v2/5df38f523100006d00b58560'
 
 export const finishMaze = async (
   body: any

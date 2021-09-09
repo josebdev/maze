@@ -6,7 +6,6 @@ import { useMaze } from 'context/mazeContext'
 
 const Main: FC = () => {
   const { finished } = useMaze()
-  console.log(`finished`, finished)
   return (
     <main>
       <Maze list={mazeFinal}></Maze>
