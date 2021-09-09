@@ -17,7 +17,7 @@ export const verifyNextMove =
   (maze: CellType[][]) =>
   (oldCordinate: MazeState, newCordinates: Coordinates): MazeState => {
     const { x, y } = newCordinates
-    let finished = false
+    let finished = oldCordinate.finished
     if (x < 0 || y < 0) {
       return {
         ...oldCordinate,
@@ -32,5 +32,5 @@ export const verifyNextMove =
     if (nextMove === FINAL) {
       finished = true
     }
-    return { position: { x, y }, steps: oldCordinate.steps++, finished }
+    return { position: { x, y }, steps: oldCordinate.steps + 1, finished }
   }
