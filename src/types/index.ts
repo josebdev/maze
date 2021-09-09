@@ -8,3 +8,7 @@ export interface MazeState {
   steps: number
   finished?: boolean
 }
+
+export interface MazeContextInterface extends MazeState {
+  setPosition: React.Dispatch<any>
+}

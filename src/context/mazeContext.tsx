@@ -1,32 +1,25 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { getIndexOfKey } from 'utils/array'
 import { mazeFinal, INITIAL } from 'utils/level'
-import { Coordinates, MazeState } from 'types'
+import { Coordinates, MazeContextInterface } from 'types'
 import { usePosition } from 'hooks/usePosition'
 
 const initialPosition = getIndexOfKey(mazeFinal, INITIAL)
-
-interface MazeContextInterface extends MazeState {
-  setPosition: React.Dispatch<any>
-}
 
 export const MazeContext =
   React.createContext<MazeContextInterface | null>(null)
 
 export const MazeProvider: React.FC = (props) => {
-  const { position, setNewPosition, steps } = usePosition(
+  const { position, setPosition, steps } = usePosition(
     initialPosition as Coordinates
   )
 
   return (
-    <MazeContext.Provider
-      value={{ position, steps, setPosition: setNewPosition }}
-      {...props}
-    />
+    <MazeContext.Provider value={{ position, steps, setPosition }} {...props} />
   )
 }
 
-export const useMaze = () => {
+export const useMaze = (): MazeContextInterface => {
   const context = React.useContext(MazeContext)
   if (!context) {
     throw new Error('useMaze must be used within a MazeProvifer')

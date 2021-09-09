@@ -8,7 +8,7 @@ const FooterConter = styled.footer`
 `
 const year = new Date().getFullYear
 
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <FooterConter>
       <p>Made By Jose Banega - copyright {year}</p>

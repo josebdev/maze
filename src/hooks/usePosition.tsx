@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Coordinates, MazeState } from 'types'
+import { Coordinates, MazeState, MazeContextInterface } from 'types'
 import { verifyNextMove } from 'utils/array'
 import { mazeFinal } from 'utils/level'
 
@@ -12,7 +12,9 @@ const KEYBOARD = {
 
 const verifyNextMoveOnFinalMaze = verifyNextMove(mazeFinal)
 
-export function usePosition(initialPosition: Coordinates) {
+export function usePosition(
+  initialPosition: Coordinates
+): MazeContextInterface {
   const [{ position, steps, finished }, setPosition] = useState<MazeState>({
     position: initialPosition as Coordinates,
     steps: 0,
@@ -57,5 +59,5 @@ export function usePosition(initialPosition: Coordinates) {
     }
   }
 
-  return { position, steps, setNewPosition }
+  return { position, steps, setPosition: setNewPosition }
 }
