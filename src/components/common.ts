@@ -9,6 +9,7 @@ export const Button = styled.button`
   font-weight: 600;
   cursor: pointer;
   font-size: 14px;
+  z-index: 9999;
 `
 
 export const Text = styled.span`

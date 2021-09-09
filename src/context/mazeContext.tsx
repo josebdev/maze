@@ -10,13 +10,13 @@ export const MazeContext =
   React.createContext<MazeContextInterface | null>(null)
 
 export const MazeProvider: React.FC = (props) => {
-  const { position, setPosition, steps, resetGame } = usePosition(
+  const { position, setPosition, steps, resetGame, finished } = usePosition(
     initialPosition as Coordinates
   )
 
   return (
     <MazeContext.Provider
-      value={{ position, steps, setPosition, resetGame }}
+      value={{ position, steps, setPosition, resetGame, finished }}
       {...props}
     />
   )

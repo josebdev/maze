@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Coordinates, MazeState, MazeContextInterface } from 'types'
 import { verifyNextMove } from 'utils/array'
 import { mazeFinal } from 'utils/level'
+import { finishMaze } from 'api'
 
 const KEYBOARD = {
   ARROW_UP: 'ArrowUp',
@@ -15,10 +16,12 @@ const verifyNextMoveOnFinalMaze = verifyNextMove(mazeFinal)
 export function usePosition(
   initialPosition: Coordinates
 ): MazeContextInterface {
-  const [{ position, steps, finished }, setPosition] = useState<MazeState>({
-    position: initialPosition as Coordinates,
-    steps: 0,
-  })
+  const [{ position, steps, finished, finishMessage }, setPosition] =
+    useState<MazeState>({
+      position: initialPosition as Coordinates,
+      steps: 0,
+      finished: false,
+    })
 
   function resetGame() {
     setPosition({
@@ -29,7 +32,18 @@ export function usePosition(
   }
 
   function setNewPosition(event: React.KeyboardEvent) {
-    if (finished) return
+    if (finished) {
+      {
+        !finishMessage &&
+          finishMaze({ position, steps }).then((e) => {
+            setPosition((oldState) => ({
+              ...oldState,
+              finishMessage: e.message,
+            }))
+          })
+      }
+      return
+    }
     switch (event.key) {
       case KEYBOARD.ARROW_LEFT:
         setPosition((old) =>
@@ -67,5 +81,5 @@ export function usePosition(
     }
   }
 
-  return { position, steps, setPosition: setNewPosition, resetGame }
+  return { position, steps, setPosition: setNewPosition, resetGame, finished }
 }
